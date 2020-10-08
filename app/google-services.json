@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "37990841903",
+    "firebase_url": "https://educo-3804f.firebaseio.com",
+    "project_id": "educo-3804f",
+    "storage_bucket": "educo-3804f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37990841903:android:d07025a9d0605732b890da",
+        "android_client_info": {
+          "package_name": "com.android.educo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37990841903-eioo10dab83n3e3oe0m609dn6q02dtj4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.educo",
+            "certificate_hash": "9766b1fd28c9447cb91f65284b88d9884d1e3f1f"
+          }
+        },
+        {
+          "client_id": "37990841903-21v5e060u3lke95smc1ta1nso5i67dhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQDx_ICzslG9-_6oU-Kh5HnByGcjEP4uc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37990841903-21v5e060u3lke95smc1ta1nso5i67dhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
