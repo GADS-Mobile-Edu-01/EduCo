@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".views.main.ui.activities.WelcomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".views.main.ui.activities.LoginActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".views.main.MainActivity">
