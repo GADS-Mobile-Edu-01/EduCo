@@ -9,4 +9,7 @@
     <color name="textColorPrimary">#303030</color>
     <color name="textColorSecondary">#9e9e9e</color>
     <color name="lightGrey">#E5E5E5</color>
+    <color name="inputBackground">#dfdfdf</color>
+    <color name="colorWhite">@android:color/white</color>
+    <color name="colorBlack">@android:color/black</color>
 </resources>
