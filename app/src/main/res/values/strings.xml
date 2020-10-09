@@ -9,4 +9,7 @@
     <string name="label_no_account">Or No Account?</string>
     <string name="error_message_in_valid_email">Enter a valid Email Address.</string>
     <string name="error_message_short_password">Password must be at least 8 characters long.</string>
+    <string name="desc_educo_logo">EduCo Logo</string>
+    <string name="label_welcome_screen_title">Welcome to EduCo</string>
+    <string name="label_welcome_message">Download Course Materials for\n offline use for free</string>
 </resources>
