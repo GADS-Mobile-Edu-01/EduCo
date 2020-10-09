@@ -24,4 +24,7 @@
     <string name="or">OR</string>
     <string name="sign_up_button">Sign Up</string>
     <string name="hello_blank_fragment">Blank fragment</string>
+    <string name="hello_dummy">Hello,\nJohn Doe</string>
+    <string name="offline">Offline Downloads</string>
+    <string name="catalog">Catalog</string>
 </resources>
