@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">EduCo</string>
     <string name="label_login_activity_title">Login to your account</string>
+    <string name="label_forgot_activity_title">Forgot your password</string>
     <string name="hint_email_address">Email Address</string>
     <string name="hint_password">Password</string>
     <string name="label_forgot_password">Forgot Password</string>
