@@ -1,11 +1,12 @@
-package com.android.educo.views.main.ui.activities
+package com.android.educo.views.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.android.educo.R
 import com.android.educo.databinding.ActivityLoginBinding
-import com.android.educo.views.main.utils.isValidEmail
+import com.android.educo.utils.isValidEmail
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun init() {
         mBinding.tvForgotPassword.setOnClickListener {
-            //  TODO: Add the code to navigate to Forget Password Screen.
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
         mBinding.btnSignIn.setOnClickListener { signUp() }
         mBinding.btnSignUp.setOnClickListener {
@@ -56,7 +57,6 @@ class LoginActivity : AppCompatActivity() {
             mBinding.edtPassword.error = getString(R.string.error_message_short_password)
             return false
         }
-
         return true
     }
 }

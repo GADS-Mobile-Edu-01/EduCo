@@ -1,4 +1,4 @@
-package com.android.educo.views.main.ui.activities
+package com.android.educo.views.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

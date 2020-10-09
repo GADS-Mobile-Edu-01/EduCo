@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:background="@color/colorWhite"
-        tools:context=".views.main.ui.activities.WelcomeActivity">
+        tools:context=".views.auth.WelcomeActivity">
 
         <ImageView
             android:id="@+id/imageView2"

@@ -6,4 +6,5 @@
     <dimen name="dimens_24">24dp</dimen>
     <dimen name="dimens_32">32dp</dimen>
     <dimen name="dimens_45">45dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
 </resources>

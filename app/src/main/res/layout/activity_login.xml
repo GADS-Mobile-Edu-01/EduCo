@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
         android:scrollbars="none"
-        tools:context=".views.main.ui.activities.LoginActivity">
+        tools:context=".views.auth.LoginActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
