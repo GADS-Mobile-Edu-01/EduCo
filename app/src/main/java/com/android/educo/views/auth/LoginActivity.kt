@@ -1,16 +1,21 @@
 package com.android.educo.views.auth
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.android.educo.R
 import com.android.educo.databinding.ActivityLoginBinding
 import com.android.educo.utils.isValidEmail
+import com.android.educo.views.auth.viewModels.AuthViewModel
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityLoginBinding
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +26,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        mBinding.lifecycleOwner = this
+        mBinding.model = viewModel
         mBinding.tvForgotPassword.setOnClickListener {
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
@@ -28,15 +35,24 @@ class LoginActivity : AppCompatActivity() {
         mBinding.btnSignUp.setOnClickListener {
             //  TODO: Add the code to navigate to Sign Up Screen.
         }
+
+        viewModel.isSuccessful.observe(this, Observer { isSuccessful ->
+            if (isSuccessful) {
+                //  TODO: Add the code to navigate to the Dashboard.
+            }
+        })
+        viewModel.message.observe(this, Observer { message ->
+            if (message.isNotEmpty())
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        })
     }
 
     private fun signUp() {
         val email = mBinding.edtEmail.text.toString().trim()
         val password = mBinding.edtPassword.text.toString().trim()
 
-        if (validateFields(email, password)) {
-            //  TODO: Handle the login process here.
-        }
+        if (validateFields(email, password))
+            viewModel.authUser(email, password)
     }
 
     /**
