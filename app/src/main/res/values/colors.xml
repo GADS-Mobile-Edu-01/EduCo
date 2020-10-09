@@ -9,7 +9,12 @@
     <color name="textColorPrimary">#303030</color>
     <color name="textColorSecondary">#9e9e9e</color>
     <color name="lightGrey">#E5E5E5</color>
+<<<<<<< HEAD
     <color name="inputBackground">#dfdfdf</color>
     <color name="colorWhite">@android:color/white</color>
     <color name="colorBlack">@android:color/black</color>
+=======
+    <color name="textField">#F0E6FF</color>
+    <color name="textFieldEndIcon">#6F35A5</color>
+>>>>>>> I have completed the sign up page
 </resources>
