@@ -1,12 +1,12 @@
-package com.android.educo.views.main
+package com.android.educo.views.main.authentication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.android.educo.R
 
-class MainActivity : AppCompatActivity() {
+class sign_up : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_main)
     }
 }
