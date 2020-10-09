@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">EduCo</string>
-<<<<<<< HEAD
+    <
+    <
+    <
+    <
+    <
+    <
+    < HEAD
     <string name="label_login_activity_title">Login to your account</string>
     <string name="label_forgot_activity_title">Forgot your password</string>
     <string name="hint_email_address">Email Address</string>
@@ -14,7 +20,7 @@
     <string name="desc_educo_logo">EduCo Logo</string>
     <string name="label_welcome_screen_title">Welcome to EduCo</string>
     <string name="label_welcome_message">Download Course Materials for\n offline use for free</string>
-=======
+    =======
     <string name="twitter_icon">Twitter</string>
     <string name="facebook_icon_Desc">Facebook</string>
     <string name="google_icon_desc">Google</string>
@@ -25,5 +31,5 @@
     <string name="sign_up">SIGN UP</string>
     <string name="or">OR</string>
     <string name="sign_up_button">Sign Up</string>
->>>>>>> I have completed the sign up page
+    >>>>>>> I have completed the sign up page
 </resources>
