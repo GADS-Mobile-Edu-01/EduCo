@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">EduCo</string>
+    <string name="label_login_activity_title">Login to your account</string>
+    <string name="hint_email_address">Email Address</string>
+    <string name="hint_password">Password</string>
+    <string name="label_forgot_password">Forgot Password</string>
+    <string name="btn_label_sign_in">Sign In</string>
+    <string name="btn_label_sign_up">Sign Up</string>
+    <string name="label_no_account">Or No Account?</string>
+    <string name="error_message_in_valid_email">Enter a valid Email Address.</string>
+    <string name="error_message_short_password">Password must be at least 8 characters long.</string>
 </resources>
