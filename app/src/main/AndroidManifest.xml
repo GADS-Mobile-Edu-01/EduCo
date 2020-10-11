@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme" >
 
         <activity android:name=".views.auth.SignUpActivity"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+                  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".views.BaseActivity" />
         <activity android:name=".views.auth.ForgotPasswordActivity" />
