@@ -21,11 +21,11 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun init() {
         mBinding.btnSignUp.setOnClickListener {
-            //  TODO: Add the code to navigate to Sign Up Screen.
+            startActivity(Intent(this, SignUpActivity::class.java))
+            finish()
         }
         mBinding.btnSignIn.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-
             finish()
         }
     }

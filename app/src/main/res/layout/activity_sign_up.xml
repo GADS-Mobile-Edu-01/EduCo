@@ -52,7 +52,7 @@
         android:fontFamily="@font/lato_medium"
         android:hint="@string/hint_full_name"
         android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         android:padding="@dimen/dimens_12"
         android:paddingStart="@dimen/dimens_12"
         android:paddingEnd="@dimen/dimens_12"
@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_image"/>
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_image" />
 
     <EditText
         android:id="@+id/edtEmailAddress"
