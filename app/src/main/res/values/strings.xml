@@ -20,11 +20,13 @@
     <string name="sign_in">Sign In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="sign_up">SIGN UP</string>
+    <string name="sign_up">Sign Up</string>
     <string name="or">OR</string>
-    <string name="sign_up_button">Sign Up</string>
     <string name="hello_blank_fragment">Blank fragment</string>
     <string name="hello_dummy">Hello,\nJohn Doe</string>
     <string name="offline">Offline Downloads</string>
     <string name="catalog">Catalog</string>
+    <string name="sign_up_button">Register on EduCo</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="error_message_in_valid_name">Please enter a valid name</string>
 </resources>
