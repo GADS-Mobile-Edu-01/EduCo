@@ -1,42 +1,34 @@
 package com.android.educo.views.auth
 
 import android.app.ProgressDialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.android.educo.R
 import com.android.educo.databinding.ActivitySignUpBinding
 import com.android.educo.utils.isValidEmail
 import com.android.educo.utils.isValidPassword
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_sign_up.view.*
 
-lateinit var Dialog:ProgressDialog
+lateinit var Dialog: ProgressDialog
 
 
 class SignUpActivity : AppCompatActivity() {
 
     // Initialize SignUpActivity Data binding Object
-    private lateinit var mBinding:ActivitySignUpBinding
+    private lateinit var mBinding: ActivitySignUpBinding
 
     // initialize firebase authentication
-    private lateinit var firebaseAuth:FirebaseAuth
+    private lateinit var firebaseAuth: FirebaseAuth
 
     // Declare variables for Email and Password EditTextInput
-    private lateinit var mEmailAddress:EditText
-    private lateinit var mPassword:EditText
-    private lateinit var mFullname:EditText
-
-    // Declare variable for GoogleSignInOptions  and GoogleSignInClient
-    private lateinit var GsignInOption:GoogleSignInOptions
-    private lateinit var GsignInClient: GoogleSignInClient
+    private lateinit var mEmailAddress: EditText
+    private lateinit var mPassword: EditText
+    private lateinit var mFullname: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +36,6 @@ class SignUpActivity : AppCompatActivity() {
         // Initialise databinding with signUp activity
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         firebaseAuth = FirebaseAuth.getInstance()
-
-
-        // initialise Google Sign
-        initializeGoogle()
-        GsignInClient = GoogleSignIn.getClient(this, GsignInOption)
 
         // initialise email and password Input
         // variables from data binding object
@@ -67,10 +54,10 @@ class SignUpActivity : AppCompatActivity() {
         super.onStart()
         val current_user = firebaseAuth.currentUser
 
-        if (current_user != null){
-            Toast.makeText(this, "USER EXIST"+current_user.email, Toast.LENGTH_LONG).show()
+        if (current_user != null) {
+            Toast.makeText(this, "USER EXIST" + current_user.email, Toast.LENGTH_LONG).show()
 
-        }else {
+        } else {
             Toast.makeText(this, "USER DOES NOT EXIST", Toast.LENGTH_LONG).show()
         }
     }
@@ -84,27 +71,16 @@ class SignUpActivity : AppCompatActivity() {
             val mFullNameText = mFullname.text.toString()
             val valid = isValidEmailandPassInput(mFullNameText, mEmailText, mPasswordText)
 
-            if(valid){
+            if (valid) {
                 Dialog.setTitle("Email Sign Up")
                 Dialog.setMessage("SignIn Up and Authenticating User")
                 signUpwithEmailandPassword(mEmailText, mPasswordText)
                 Dialog.show()
-            }else Toast.makeText(this, "Invalid input Text", Toast.LENGTH_LONG).show()
+            } else Toast.makeText(this, "Invalid input Text", Toast.LENGTH_LONG).show()
 
         }
 
 
-    }
-
-    /*
-        Initialize google signIn with GoogleSignInOptions Object
-        Request for users Email and other default user data
-    * */
-    private fun initializeGoogle(){
-        GsignInOption = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken(getString(R.string.default_web_client_id))
-                        .requestEmail()
-                        .build()
     }
 
     /*
@@ -116,34 +92,39 @@ class SignUpActivity : AppCompatActivity() {
      *
      * @return it has no return value
     * */
-    private fun signUpwithEmailandPassword(email:String, password:String){
+    private fun signUpwithEmailandPassword(email: String, password: String) {
         try {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this){task ->
-                    Log.d("TAG_SIGNUP_ACTIVITY", ""+task.result + task.exception)
-                    if(task.isSuccessful){
+                .addOnCompleteListener(this) { task ->
+                    Log.d("TAG_SIGNUP_ACTIVITY", "" + task.result + task.exception)
+                    if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
 
                         Log.d("SIGNUP_ACTIVITY", "User signed in Successfully")
                         val user = firebaseAuth.currentUser
                         Dialog.dismiss()
-                        Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG)
+                            .show()
 //                        TODO("Implement UpdateUI functionality and return $user to it")
 
-                    }else{
+                    } else {
                         // If sign in fails, display a message to the user.
                         Dialog.dismiss()
                         Log.d("SIGNUP_ACTIVITY", "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(this, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this, "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
 
 //                        TODO("Return null to the UpdateUI functionality")
                     }
                 }
-        }catch (E:ApiException){
-            Log.d("SIGNUP_ACTIVITY", "createUserWithEmail:failure "+E.message)
-            Toast.makeText(this, "Authentication failed.",
-                Toast.LENGTH_SHORT).show()
+        } catch (E: ApiException) {
+            Log.d("SIGNUP_ACTIVITY", "createUserWithEmail:failure " + E.message)
+            Toast.makeText(
+                this, "Authentication failed.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
     }
@@ -156,17 +137,21 @@ class SignUpActivity : AppCompatActivity() {
      *
      * @return true if email and password is valid
     * */
-    private fun isValidEmailandPassInput(fullname:String, email:String,password:String):Boolean{
-        if(fullname.isEmpty()){
+    private fun isValidEmailandPassInput(
+        fullname: String,
+        email: String,
+        password: String
+    ): Boolean {
+        if (fullname.isEmpty()) {
             mFullname.error = getString(R.string.error_message_in_valid_name)
             return false
         }
 
-        if(!email.isValidEmail()){
+        if (!email.isValidEmail()) {
             mEmailAddress.error = getString(R.string.error_message_in_valid_email)
             return false
         }
-        if(!password.isValidPassword()){
+        if (!password.isValidPassword()) {
             mPassword.error = getString(R.string.error_message_short_password)
             return false
         }
