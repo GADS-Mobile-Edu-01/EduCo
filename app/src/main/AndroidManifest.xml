@@ -3,6 +3,7 @@
     package="com.android.educo">
 
     <application
+        android:name=".utils.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +21,7 @@
             android:name=".views.auth.WelcomeActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".views.SplashScreen">
+        <activity android:name=".views.auth.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

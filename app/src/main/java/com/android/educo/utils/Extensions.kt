@@ -9,13 +9,13 @@ import java.util.regex.Pattern
 fun String.isValidEmail(): Boolean = Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
 fun String.isValidPassword(): Boolean {
-    // Regex to check valid password.
-    // Regex to check valid password.
-    val regex = ("^(?=.*[0-9])"
-            + "(?=.*[a-z])(?=.*[A-Z])"
-            + "(?=.*[@#$%^&+=])"
-            + "(?=\\S+$).{8,20}$")
-    val pattern = Pattern.compile(regex)
-    val matcher = pattern.matcher(this)
-    return matcher.matches()
+//    // Regex to check valid password.
+//    // Regex to check valid password.
+//    val regex = ("^(?=.*[0-9])"
+//            + "(?=.*[a-z])(?=.*[A-Z])"
+//            + "(?=.*[@#$%^&+=])"
+//            + "(?=\\S+$).{8,20}$")
+//    val pattern = Pattern.compile(regex)
+//    val matcher = pattern.matcher(this)
+    return this.length >= 8
 }
