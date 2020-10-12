@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/splash_icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimens_16"
@@ -62,9 +62,9 @@
         android:text="Total Downloads: 0"
         android:textColor="@color/textColorPrimary"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/splash_icon"
         app:layout_constraintStart_toStartOf="@+id/dateText"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/splash_icon" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/catalogCard"

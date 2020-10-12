@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.android.educo.R
+import com.android.educo.utils.PrefsUtil
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
@@ -30,6 +31,8 @@ class MainFragment : Fragment() {
         offlineCard.setOnClickListener {
             findNavController().navigate(R.id.offlineFragment)
         }
+
+        helloText.text = "Hello,\n${PrefsUtil.getUserName()}"
 
     }
 

@@ -1,6 +1,7 @@
 package com.android.educo.views.auth
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -9,10 +10,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.android.educo.R
 import com.android.educo.databinding.ActivitySignUpBinding
+import com.android.educo.model.User
+import com.android.educo.utils.Constants
+import com.android.educo.utils.PrefsUtil.setUserName
 import com.android.educo.utils.isValidEmail
 import com.android.educo.utils.isValidPassword
+import com.android.educo.views.main.MainActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 lateinit var Dialog: ProgressDialog
 
@@ -26,16 +40,29 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     // Declare variables for Email and Password EditTextInput
-    private lateinit var mEmailAddress: EditText
-    private lateinit var mPassword: EditText
-    private lateinit var mFullname: EditText
+    private lateinit var mEmailAddress:EditText
+    private lateinit var mPassword:EditText
+    private lateinit var mFullname:EditText
+    private lateinit var auth : FirebaseAuth
+    private lateinit var db : FirebaseFirestore
+    private lateinit var userRef : CollectionReference
+    // Declare variable for GoogleSignInOptions  and GoogleSignInClient
+    private lateinit var GsignInOption:GoogleSignInOptions
+    private lateinit var GsignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        db = Firebase.firestore
+        auth = FirebaseAuth.getInstance()
+        userRef = db.collection(Constants.COLLECTION_USERS)
         // Initialise databinding with signUp activity
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         firebaseAuth = FirebaseAuth.getInstance()
+
+
+        // initialise Google Sign
+        initializeGoogle()
+        GsignInClient = GoogleSignIn.getClient(this, GsignInOption)
 
         // initialise email and password Input
         // variables from data binding object
@@ -52,14 +79,14 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val current_user = firebaseAuth.currentUser
+//        val current_user = firebaseAuth.currentUser
 
-        if (current_user != null) {
-            Toast.makeText(this, "USER EXIST" + current_user.email, Toast.LENGTH_LONG).show()
-
-        } else {
-            Toast.makeText(this, "USER DOES NOT EXIST", Toast.LENGTH_LONG).show()
-        }
+//        if (current_user != null){
+//            Toast.makeText(this, "USER EXIST"+current_user.email, Toast.LENGTH_LONG).show()
+//
+//        }else {
+//            Toast.makeText(this, "USER DOES NOT EXIST", Toast.LENGTH_LONG).show()
+//        }
     }
 
     private fun initOnclickEvents() {
@@ -99,24 +126,16 @@ class SignUpActivity : AppCompatActivity() {
                     Log.d("TAG_SIGNUP_ACTIVITY", "" + task.result + task.exception)
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-
                         Log.d("SIGNUP_ACTIVITY", "User signed in Successfully")
                         val user = firebaseAuth.currentUser
-                        Dialog.dismiss()
-                        Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG)
-                            .show()
-//                        TODO("Implement UpdateUI functionality and return $user to it")
-
-                    } else {
+                        Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
+                        updateUser(user)
+                    }else{
                         // If sign in fails, display a message to the user.
                         Dialog.dismiss()
                         Log.d("SIGNUP_ACTIVITY", "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(
-                            this, "Authentication failed.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-//                        TODO("Return null to the UpdateUI functionality")
+                        Toast.makeText(this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
         } catch (E: ApiException) {
@@ -127,6 +146,20 @@ class SignUpActivity : AppCompatActivity() {
             ).show()
         }
 
+    }
+
+    private fun updateUser(user: FirebaseUser?) {
+        val mUser = User(mFullname.text.toString())
+        userRef.document(user!!.uid).set(mUser, SetOptions.merge()).addOnCompleteListener {
+            if(it.isSuccessful){
+                Dialog.dismiss()
+                mUser.name.setUserName()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }else{
+                user.delete()
+            }
+        }
     }
 
     /*
