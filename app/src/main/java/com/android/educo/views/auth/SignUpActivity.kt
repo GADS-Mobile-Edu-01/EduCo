@@ -1,6 +1,7 @@
 package com.android.educo.views.auth
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -69,15 +70,20 @@ class SignUpActivity : AppCompatActivity() {
             val mEmailText = mEmailAddress.text.toString()
             val mPasswordText = mPassword.text.toString()
             val mFullNameText = mFullname.text.toString()
-            val valid = isValidEmailandPassInput(mFullNameText, mEmailText, mPasswordText)
+            val valid = isValidEmailAndPassInput(mFullNameText, mEmailText, mPasswordText)
 
             if (valid) {
                 Dialog.setTitle("Email Sign Up")
                 Dialog.setMessage("SignIn Up and Authenticating User")
-                signUpwithEmailandPassword(mEmailText, mPasswordText)
+                signUpWithEmailAndPassword(mEmailText, mPasswordText)
                 Dialog.show()
             } else Toast.makeText(this, "Invalid input Text", Toast.LENGTH_LONG).show()
 
+        }
+        mBinding.btnSignIn.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+
+            finish()
         }
 
 
@@ -92,7 +98,7 @@ class SignUpActivity : AppCompatActivity() {
      *
      * @return it has no return value
     * */
-    private fun signUpwithEmailandPassword(email: String, password: String) {
+    private fun signUpWithEmailAndPassword(email: String, password: String) {
         try {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
@@ -137,12 +143,12 @@ class SignUpActivity : AppCompatActivity() {
      *
      * @return true if email and password is valid
     * */
-    private fun isValidEmailandPassInput(
-        fullname: String,
+    private fun isValidEmailAndPassInput(
+        fullName: String,
         email: String,
         password: String
     ): Boolean {
-        if (fullname.isEmpty()) {
+        if (fullName.isEmpty()) {
             mFullname.error = getString(R.string.error_message_in_valid_name)
             return false
         }

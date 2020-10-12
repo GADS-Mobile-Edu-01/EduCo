@@ -11,6 +11,7 @@ import com.android.educo.R
 import com.android.educo.databinding.ActivityLoginBinding
 import com.android.educo.utils.isValidEmail
 import com.android.educo.views.auth.viewModels.AuthViewModel
+import com.android.educo.views.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -33,12 +34,14 @@ class LoginActivity : AppCompatActivity() {
         }
         mBinding.btnSignIn.setOnClickListener { signUp() }
         mBinding.btnSignUp.setOnClickListener {
-            //  TODO: Add the code to navigate to Sign Up Screen.
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
 
         viewModel.isSuccessful.observe(this, Observer { isSuccessful ->
             if (isSuccessful) {
-                //  TODO: Add the code to navigate to the Dashboard.
+                startActivity(Intent(this, MainActivity::class.java))
+
+                finish()
             }
         })
         viewModel.message.observe(this, Observer { message ->
