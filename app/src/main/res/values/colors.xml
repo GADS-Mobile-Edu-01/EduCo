@@ -15,4 +15,5 @@
     <color name="colorBlack">@android:color/black</color>
     <color name="textField">#F0E6FF</color>
     <color name="textFieldEndIcon">#6F35A5</color>
+    <color name="colorLoading">#40000000</color>
 </resources>

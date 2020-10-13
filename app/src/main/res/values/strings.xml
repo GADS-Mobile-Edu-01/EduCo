@@ -31,4 +31,20 @@
     <string name="error_message_in_valid_name">Please enter a valid name</string>
     <string name="label_sign_up_screen_title">Sign Up Screen</string>
     <string name="label_or_have_account">Or Already have account?</string>
+    <string name="title_activity_details">Details Activity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="desc_download_button">Download button</string>
+    <string name="desc_details_screen_banner">Details Screen Banner</string>
+    <string name="desc_back_button">Back Button</string>
+    <string name="desc_open_button">Open/Play Button</string>
+    <string name="label_size">Size</string>
+    <string name="label_duration">Duration</string>
+    <string name="label_date_uploaded">Date Uploaded</string>
 </resources>
