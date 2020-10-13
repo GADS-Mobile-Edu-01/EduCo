@@ -2,7 +2,6 @@ package com.android.educo.views.auth
 
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -17,7 +16,6 @@ import com.android.educo.utils.PrefsUtil.setUserName
 import com.android.educo.utils.isValidEmail
 import com.android.educo.utils.isValidPassword
 import com.android.educo.views.main.MainActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -28,7 +26,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_sign_up.view.*
 
 lateinit var Dialog: ProgressDialog
 
