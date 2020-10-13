@@ -1,138 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <data>
+    <data>
 
-  </data>
+    </data>
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      tools:context=".views.auth.SignUpActivity">
-
-
-    <TextView
-        android:id="@+id/txt_Sign_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lato_black"
-        android:textColor="@color/colorBlack"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/sign_up_button"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:id="@+id/sign_up_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/register_vector" app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.395" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Sign_up"/>
-
-    <EditText
-        android:id="@+id/edtFullName"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/input_rounded_background"
-        android:drawableStart="@drawable/ic_user"
-        android:drawablePadding="@dimen/dimens_12"
-        android:ems="10"
-        android:fontFamily="@font/lato_medium"
-        android:hint="@string/hint_full_name"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:padding="@dimen/dimens_12"
-        android:paddingStart="@dimen/dimens_12"
-        android:paddingEnd="@dimen/dimens_12"
-        android:paddingBottom="@dimen/dimens_12"
-        android:textColor="@color/textColorPrimary"
-        android:textColorHint="@color/textColorPrimary"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_image" />
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-    <EditText
-        android:id="@+id/edtEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/input_rounded_background"
-        android:drawableStart="@drawable/ic_mail"
-        android:drawablePadding="@dimen/dimens_12"
-        android:ems="10"
-        android:fontFamily="@font/lato_medium"
-        android:hint="@string/hint_email_address"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:padding="@dimen/dimens_12"
-        android:paddingStart="@dimen/dimens_12"
-        android:paddingEnd="@dimen/dimens_12"
-        android:paddingBottom="@dimen/dimens_12"
-        android:textColor="@color/textColorPrimary"
-        android:textColorHint="@color/textColorPrimary"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/edtFullName"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".views.auth.SignUpActivity">
 
+            <TextView
+                android:id="@+id/txt_Sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimens_24"
+                android:layout_marginTop="@dimen/dimens_32"
+                android:fontFamily="@font/lato_black"
+                android:text="@string/sign_up_button"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edtPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/input_rounded_background"
-        android:drawableStart="@drawable/ic_password_key"
-        android:drawableEnd="@drawable/ic_password_eye"
-        android:drawablePadding="@dimen/dimens_12"
-        android:ems="10"
-        android:fontFamily="@font/lato_medium"
-        android:hint="@string/hint_password"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:padding="@dimen/dimens_12"
-        android:paddingStart="@dimen/dimens_12"
-        android:paddingEnd="@dimen/dimens_12"
-        android:paddingBottom="@dimen/dimens_12"
-        android:textColor="@color/textColorPrimary"
-        android:textColorHint="@color/textColorPrimary"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/edtEmailAddress"/>
+            <ImageView
+                android:id="@+id/sign_up_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimens_16"
+                android:contentDescription="@string/label_sign_up_screen_title"
+                android:src="@drawable/register_vector"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.395"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_Sign_up" />
 
-    <Button
-        android:id="@+id/sign_up_btn"
-        android:layout_width="300dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textAllCaps="false"
-        android:layout_height="40dp"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_outlined_rounded_background"
-        android:text="@string/sign_up"
-        app:layout_constraintEnd_toEndOf="@+id/edtPassword"
-        app:layout_constraintStart_toStartOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/edtPassword"/>
+            <EditText
+                android:id="@+id/edtFullName"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimens_45"
+                android:layout_marginStart="?actionBarSize"
+                android:layout_marginTop="@dimen/dimens_24"
+                android:layout_marginEnd="?actionBarSize"
+                android:background="@drawable/input_rounded_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/dimens_12"
+                android:ems="10"
+                android:fontFamily="@font/lato_medium"
+                android:hint="@string/hint_full_name"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/dimens_12"
+                android:paddingStart="@dimen/dimens_12"
+                android:paddingEnd="@dimen/dimens_12"
+                android:paddingBottom="@dimen/dimens_12"
+                android:textColor="@color/textColorPrimary"
+                android:textColorHint="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_image" />
 
+            <EditText
+                android:id="@+id/edtEmailAddress"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimens_45"
+                android:layout_marginStart="?actionBarSize"
+                android:layout_marginTop="@dimen/dimens_16"
+                android:layout_marginEnd="?actionBarSize"
+                android:background="@drawable/input_rounded_background"
+                android:drawableStart="@drawable/ic_mail"
+                android:drawablePadding="@dimen/dimens_12"
+                android:ems="10"
+                android:fontFamily="@font/lato_medium"
+                android:hint="@string/hint_email_address"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/dimens_12"
+                android:paddingStart="@dimen/dimens_12"
+                android:paddingEnd="@dimen/dimens_12"
+                android:paddingBottom="@dimen/dimens_12"
+                android:textColor="@color/textColorPrimary"
+                android:textColorHint="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtFullName" />
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_45"
+                android:layout_marginStart="?actionBarSize"
+                android:layout_marginTop="@dimen/dimens_16"
+                android:layout_marginEnd="?actionBarSize"
+                android:background="@drawable/input_rounded_background"
+                android:drawableStart="@drawable/ic_password_key"
+                android:drawableEnd="@drawable/ic_password_eye"
+                android:drawablePadding="@dimen/dimens_12"
+                android:ems="10"
+                android:fontFamily="@font/lato_medium"
+                android:hint="@string/hint_password"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:padding="@dimen/dimens_12"
+                android:paddingStart="@dimen/dimens_12"
+                android:paddingEnd="@dimen/dimens_12"
+                android:paddingBottom="@dimen/dimens_12"
+                android:textColor="@color/textColorPrimary"
+                android:textColorHint="@color/textColorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edtEmailAddress" />
+
+            <Button
+                android:id="@+id/sign_up_btn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimens_45"
+                android:layout_marginTop="@dimen/dimens_24"
+                android:background="@drawable/btn_outlined_rounded_background"
+                android:text="@string/sign_up"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/edtPassword"
+                app:layout_constraintStart_toStartOf="@+id/edtPassword"
+                app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/lato_medium"
+                android:text="@string/label_or_have_account"
+                android:textColor="@color/textColorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_btn"
+                app:layout_constraintStart_toStartOf="@+id/sign_up_btn"
+                app:layout_constraintTop_toBottomOf="@+id/sign_up_btn" />
+
+            <Button
+                android:id="@+id/btnSignIn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimens_45"
+                android:layout_marginTop="@dimen/dimens_16"
+                android:background="@drawable/btn_rounded_background"
+                android:text="@string/btn_label_sign_in"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="@+id/sign_up_btn"
+                app:layout_constraintStart_toStartOf="@+id/sign_up_btn"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

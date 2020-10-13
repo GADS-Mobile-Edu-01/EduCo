@@ -2,6 +2,7 @@ package com.android.educo.views.auth
 
 import android.app.ProgressDialog
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -27,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_sign_up.view.*
 
 lateinit var Dialog: ProgressDialog
 
@@ -58,11 +60,6 @@ class SignUpActivity : AppCompatActivity() {
         // Initialise databinding with signUp activity
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         firebaseAuth = FirebaseAuth.getInstance()
-
-
-        // initialise Google Sign
-        initializeGoogle()
-        GsignInClient = GoogleSignIn.getClient(this, GsignInOption)
 
         // initialise email and password Input
         // variables from data binding object
@@ -96,15 +93,20 @@ class SignUpActivity : AppCompatActivity() {
             val mEmailText = mEmailAddress.text.toString()
             val mPasswordText = mPassword.text.toString()
             val mFullNameText = mFullname.text.toString()
-            val valid = isValidEmailandPassInput(mFullNameText, mEmailText, mPasswordText)
+            val valid = isValidEmailAndPassInput(mFullNameText, mEmailText, mPasswordText)
 
             if (valid) {
                 Dialog.setTitle("Email Sign Up")
                 Dialog.setMessage("SignIn Up and Authenticating User")
-                signUpwithEmailandPassword(mEmailText, mPasswordText)
+                signUpWithEmailAndPassword(mEmailText, mPasswordText)
                 Dialog.show()
             } else Toast.makeText(this, "Invalid input Text", Toast.LENGTH_LONG).show()
 
+        }
+        mBinding.btnSignIn.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+
+            finish()
         }
 
 
@@ -119,7 +121,7 @@ class SignUpActivity : AppCompatActivity() {
      *
      * @return it has no return value
     * */
-    private fun signUpwithEmailandPassword(email: String, password: String) {
+    private fun signUpWithEmailAndPassword(email: String, password: String) {
         try {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
@@ -128,6 +130,7 @@ class SignUpActivity : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("SIGNUP_ACTIVITY", "User signed in Successfully")
                         val user = firebaseAuth.currentUser
+                      
                         Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
                         updateUser(user)
                     }else{
@@ -170,12 +173,12 @@ class SignUpActivity : AppCompatActivity() {
      *
      * @return true if email and password is valid
     * */
-    private fun isValidEmailandPassInput(
-        fullname: String,
+    private fun isValidEmailAndPassInput(
+        fullName: String,
         email: String,
         password: String
     ): Boolean {
-        if (fullname.isEmpty()) {
+        if (fullName.isEmpty()) {
             mFullname.error = getString(R.string.error_message_in_valid_name)
             return false
         }

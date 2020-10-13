@@ -21,7 +21,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun init() {
         mBinding.btnSignUp.setOnClickListener {
-            startActivity(Intent(this, SignUpActivity::class.java))
+            startActivity(Intent(this, SignUpActivity::class.java))        
             finish()
         }
         mBinding.btnSignIn.setOnClickListener {

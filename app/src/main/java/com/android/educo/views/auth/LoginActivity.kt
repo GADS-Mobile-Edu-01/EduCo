@@ -35,12 +35,14 @@ class LoginActivity : AppCompatActivity() {
         mBinding.btnSignIn.setOnClickListener { signUp() }
         mBinding.btnSignUp.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+          
             finish()
         }
 
         viewModel.isSuccessful.observe(this, Observer { isSuccessful ->
             if (isSuccessful) {
                 startActivity(Intent(this, MainActivity::class.java))
+              
                 finish()
             }
         })
