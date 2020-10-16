@@ -10,17 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".views.details.DetailsActivity"
+            android:label="@string/title_activity_details"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".views.auth.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".views.BaseActivity" />
         <activity android:name=".views.auth.ForgotPasswordActivity" />
-
         <activity
             android:name=".views.auth.WelcomeActivity"
             android:screenOrientation="portrait" />
-
         <activity android:name=".views.auth.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.auth.LoginActivity"
             android:screenOrientation="portrait" />
