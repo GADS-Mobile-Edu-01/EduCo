@@ -9,7 +9,11 @@
         android:id="@+id/mainFragment"
         android:name="com.android.educo.views.main.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_addCatalogueFragment"
+            app:destination="@id/addCatalogueFragment" />
+    </fragment>
     <fragment
         android:id="@+id/catalogueFragment"
         android:name="com.android.educo.views.main.ui.catalogue.CatalogueFragment"
@@ -25,4 +29,9 @@
         android:name="com.android.educo.views.main.ui.OfflineFragment"
         android:label="fragment_offline"
         tools:layout="@layout/fragment_offline" />
+    <fragment
+        android:id="@+id/addCatalogueFragment"
+        android:name="com.android.educo.views.main.ui.catalogue.AddCatalogueFragment"
+        android:label="fragment_add_catalogue"
+        tools:layout="@layout/fragment_add_catalogue" />
 </navigation>
