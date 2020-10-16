@@ -12,6 +12,7 @@ import com.android.educo.R
 import com.android.educo.databinding.ActivitySignUpBinding
 import com.android.educo.model.User
 import com.android.educo.utils.Constants
+import com.android.educo.utils.PrefsUtil.setAdmin
 import com.android.educo.utils.PrefsUtil.setUserName
 import com.android.educo.utils.isValidEmail
 import com.android.educo.utils.isValidPassword
@@ -154,6 +155,7 @@ class SignUpActivity : AppCompatActivity() {
             if(it.isSuccessful){
                 Dialog.dismiss()
                 mUser.name.setUserName()
+                mUser.isAdmin.setAdmin()
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }else{
