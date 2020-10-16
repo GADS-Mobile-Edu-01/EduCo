@@ -57,17 +57,17 @@ class FirebaseRepository {
                 VIDEO -> {
                     val id = videoRef.document().id
                     catalogue.id = id
-                    videoRef.document().set(catalogue).await()
+                    videoRef.document(id).set(catalogue).await()
                 }
                 AUDIO -> {
                     val id = audioRef.document().id
                     catalogue.id = id
-                    audioRef.document().set(catalogue).await()
+                    audioRef.document(id).set(catalogue).await()
                 }
                 else -> {
                     val id = docsRef.document().id
                     catalogue.id = id
-                    docsRef.document().set(catalogue).await()
+                    docsRef.document(id).set(catalogue).await()
                 }
             }
             Resource.Success("Material uploaded successfully", "Material uploaded successfully")
