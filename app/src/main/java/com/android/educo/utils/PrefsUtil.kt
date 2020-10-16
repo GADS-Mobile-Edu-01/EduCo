@@ -12,4 +12,12 @@ object PrefsUtil{
     fun getUserName() : String{
         return Prefs.getString(PREF_NAME,"Not set")
     }
+
+    fun Boolean.setAdmin(){
+        Prefs.putBoolean("Is_ADMIN",this)
+    }
+
+    fun isAdmin() : Boolean{
+        return Prefs.getBoolean("Is_ADMIN",false)
+    }
 }

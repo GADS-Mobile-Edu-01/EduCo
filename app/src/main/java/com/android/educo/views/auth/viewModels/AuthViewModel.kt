@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.android.educo.model.User
 import com.android.educo.utils.Constants.COLLECTION_USERS
+import com.android.educo.utils.PrefsUtil.setAdmin
 import com.android.educo.utils.PrefsUtil.setUserName
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -46,6 +47,7 @@ class AuthViewModel @Inject constructor() : ViewModel() {
             if(it.isSuccessful){
                 val result = it.result?.toObject<User>()!!
                 result.name.setUserName()
+                result.isAdmin.setAdmin()
                 _isSuccessful.value = it.isSuccessful
             }else{
                 if(auth.currentUser != null){
