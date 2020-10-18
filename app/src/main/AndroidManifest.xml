@@ -43,7 +43,9 @@
         <activity
             android:name=".views.auth.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".views.main.MainActivity" />
+
+        <activity android:name=".views.main.MainActivity" >
+        </activity>
     </application>
 
 </manifest>

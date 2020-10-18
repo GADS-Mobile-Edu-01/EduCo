@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.android.educo.R
 import com.android.educo.databinding.ActivitySignUpBinding
@@ -46,6 +45,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
     private lateinit var db : FirebaseFirestore
     private lateinit var userRef : CollectionReference
+
     // Declare variable for GoogleSignInOptions  and GoogleSignInClient
     private lateinit var GsignInOption:GoogleSignInOptions
     private lateinit var GsignInClient: GoogleSignInClient
@@ -125,10 +125,11 @@ class SignUpActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     Log.d("TAG_SIGNUP_ACTIVITY", "" + task.result + task.exception)
                     if (task.isSuccessful) {
+
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("SIGNUP_ACTIVITY", "User signed in Successfully")
                         val user = firebaseAuth.currentUser
-                      
+
                         Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
                         updateUser(user)
                     }else{
