@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.educo.R
+import com.android.educo.databinding.FragmentCatalogueDocsBinding
 import com.android.educo.model.TextDocument
 import com.android.educo.views.BaseFragment
 import com.android.educo.views.main.ui.catalogue.adapter.DocRecyclerAdapter
@@ -23,8 +24,9 @@ class CatalogueDocsFragment : BaseFragment() {
 
     private lateinit var textDocRecyclerView:RecyclerView
     private val docTextViewModel: DocViewModel by viewModels()
+    lateinit var binding:FragmentCatalogueDocsBinding
 
-    override fun onCreateView(
+        override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -32,11 +34,11 @@ class CatalogueDocsFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.fragment_catalogue_docs, container, false)
 
         textDocRecyclerView = view.findViewById(R.id.recycler_view) as RecyclerView
+        textDocRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         docTextViewModel.textData.observe(viewLifecycleOwner, Observer { textData ->
             if(textData.isNotEmpty()){
                 val textDocAdapter = DocRecyclerAdapter(requireContext(), textData)
-                textDocRecyclerView.layoutManager = LinearLayoutManager(requireContext())
                 textDocRecyclerView.adapter = textDocAdapter
             }
         })
