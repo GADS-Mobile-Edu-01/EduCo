@@ -2,6 +2,7 @@ package com.android.educo.views.main.ui.catalogue.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,13 +26,14 @@ class DocRecyclerAdapter(
         val title = itemView.findViewById(R.id.txtDoctitle) as TextView
         val description = itemView.findViewById(R.id.txtDocDesc) as TextView
         val courseDuration = itemView.findViewById(R.id.duration) as TextView
-        var TextDocPosition = 0
+        var TextDocPosition = -1
 
         // Initialize onClick Event on the ViewHolder Card
         init {
             itemView.setOnClickListener {
-//                TODO("Change the Activity name to the appropriate onw")
+//                TODO("Navigate to the appropriate fragment")
                 Toast.makeText(context, "$TextDocPosition is the course id", Toast.LENGTH_LONG).show()
+                Log.d("DOCTEXT", "$TextDocPosition is the course id")
 //                Intent(context, SignUpActivity::class.java).apply {
 //                    putExtra(TEXTDOC_POSITION, TextDocPosition)
 //                }.also { context.startActivity(it) }

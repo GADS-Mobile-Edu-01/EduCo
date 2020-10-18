@@ -130,7 +130,13 @@ class SignUpActivity : AppCompatActivity() {
                         Log.d("SIGNUP_ACTIVITY", "User signed in Successfully")
                         val user = firebaseAuth.currentUser
 
-                        Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
+                        // send verification mail
+                        user!!.sendEmailVerification().addOnCompleteListener {
+                            if(it.isSuccessful){
+                                Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
+                            }
+                        }
+
                         updateUser(user)
                     }else{
                         // If sign in fails, display a message to the user.
