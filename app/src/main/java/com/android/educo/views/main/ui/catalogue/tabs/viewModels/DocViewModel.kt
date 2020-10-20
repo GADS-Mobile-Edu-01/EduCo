@@ -24,12 +24,14 @@ class DocViewModel:ViewModel() {
             TextDocument(
                 "Intro to Java",
                 "Learn Java in 2 days",
-                "All you need to know about java", "1:20mins"
+                "All you need to know about java",
+                "1:20mins"
             ),
             TextDocument(
                 "Intro to SQL",
                 "Learn SQL in 2 days",
-                "All you need to know about SQL", "2:20mins"
+                "All you need to know about SQL",
+                "2:20mins"
             )
         )
 
