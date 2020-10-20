@@ -34,7 +34,6 @@ class CatalogueDocsFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.fragment_catalogue_docs, container, false)
 
         textDocRecyclerView = view.findViewById(R.id.recycler_view) as RecyclerView
-        textDocRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         docTextViewModel.textData.observe(viewLifecycleOwner, Observer { textData ->
             if(textData.isNotEmpty()){
