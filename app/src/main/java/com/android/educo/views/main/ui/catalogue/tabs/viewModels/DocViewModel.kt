@@ -19,7 +19,15 @@ class DocViewModel:ViewModel() {
 
     private fun getTextData(): List<TextDocument> {
         var data:List<TextDocument> = emptyList()
-        viewModelScope.launch {
+         viewModelScope.launch {
+            data = querytextDoc()
+        }
+        return data
+    }
+
+    private suspend fun querytextDoc():List<TextDocument>{
+        var data:List<TextDocument> = emptyList()
+        withContext(Dispatchers.IO){
             data  = arrayListOf<TextDocument>(
                 TextDocument(
                     "Intro to Java",
@@ -35,8 +43,7 @@ class DocViewModel:ViewModel() {
                 )
             )
         }
+
         return data
     }
-
-
 }
