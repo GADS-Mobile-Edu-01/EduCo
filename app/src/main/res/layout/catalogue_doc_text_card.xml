@@ -6,7 +6,7 @@
     <data>
         <variable
             name="model"
-            type="com.android.educo.views.main.ui.catalogue.tabs.viewModels.DocViewModel"/>
+            type="com.android.educo.views.main.ui.catalogue.tabs.viewModels.CatalogueViewModel"/>
     </data>
     <FrameLayout
         android:layout_width="match_parent"

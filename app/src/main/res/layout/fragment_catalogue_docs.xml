@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.main.ui.catalogue.tabs.CatalogueDocsFragment">
 
-    <FrameLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/doc_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.main.ui.catalogue.tabs.CatalogueDocsFragment">
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/catalogue_doc_text_card" >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_width="409dp" android:layout_height="729dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/catalogue_doc_text_card"/>
-    </FrameLayout>
-</layout>
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <include
+        android:id="@+id/catalogueDocsProgress"
+        layout="@layout/progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</FrameLayout>

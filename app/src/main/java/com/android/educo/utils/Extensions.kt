@@ -1,6 +1,8 @@
 package com.android.educo.utils
 
 import android.util.Patterns
+import android.view.View
+import kotlinx.android.synthetic.main.fragment_catalogue_docs.*
 import java.util.regex.Pattern
 
 /**
@@ -18,4 +20,12 @@ fun String.isValidPassword(): Boolean {
 //    val pattern = Pattern.compile(regex)
 //    val matcher = pattern.matcher(this)
     return this.length >= 8
+}
+
+fun View.show(){
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide(){
+    this.visibility = View.GONE
 }
