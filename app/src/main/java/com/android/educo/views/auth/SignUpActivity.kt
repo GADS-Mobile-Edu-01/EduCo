@@ -46,6 +46,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
     private lateinit var db : FirebaseFirestore
     private lateinit var userRef : CollectionReference
+
     // Declare variable for GoogleSignInOptions  and GoogleSignInClient
     private lateinit var GsignInOption:GoogleSignInOptions
     private lateinit var GsignInClient: GoogleSignInClient
@@ -125,11 +126,18 @@ class SignUpActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     Log.d("TAG_SIGNUP_ACTIVITY", "" + task.result + task.exception)
                     if (task.isSuccessful) {
+
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("SIGNUP_ACTIVITY", "User signed in Successfully")
                         val user = firebaseAuth.currentUser
-                      
-                        Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
+
+                        // send verification mail
+                        user!!.sendEmailVerification().addOnCompleteListener {
+                            if(it.isSuccessful){
+                                Toast.makeText(this, "User Signed Up Successfully", Toast.LENGTH_LONG).show()
+                            }
+                        }
+
                         updateUser(user)
                     }else{
                         // If sign in fails, display a message to the user.
