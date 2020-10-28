@@ -37,6 +37,6 @@ class SplashScreen : AppCompatActivity() {
 
             }
         })
-//        splash_icon.startAnimation(anim)
+       splash_icon.startAnimation(anim)
     }
 }

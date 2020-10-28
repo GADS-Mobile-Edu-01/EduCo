@@ -19,6 +19,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.ktx.toObjects
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.tasks.await
@@ -48,6 +49,18 @@ class FirebaseRepository {
         }
     }
 
+    suspend fun getCatalogue(type : String): Resource<ArrayList<Catalogue>> {
+        return try {
+            val userSnapshot = db.collection(type).get().await()
+            val user: ArrayList<Catalogue> = userSnapshot.toObjects<Catalogue>() as ArrayList
+            val message = if(user.isEmpty()) "No catalogue found for this section" else "Catalogue Details gotten successfully"
+            Resource.Success(user, message)
+        } catch (e: Exception) {
+            Resource.Failure(e.message!!)
+        }
+    }
+
+
     suspend fun addNewCatalogue(catalogue: Catalogue, uri : Uri): Resource<String> {
         return try {
             val uploadTask = storageRef.child("catalogueFiles/${uri.toFile().name}").putFile(uri)
@@ -75,5 +88,4 @@ class FirebaseRepository {
             Resource.Failure(e.message!!)
         }
     }
-
 }
