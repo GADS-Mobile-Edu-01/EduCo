@@ -1,19 +1,35 @@
 package com.android.educo.views.details
 
 import android.os.Bundle
+import android.provider.SyncStateContract
+import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.android.educo.R
 import com.android.educo.databinding.ActivityDetailsBinding
+import com.android.educo.model.Catalogue
+import com.android.educo.offline.OfflineRoomDatabase
+import com.android.educo.utils.Constants
+import com.android.educo.utils.Constants.COLLECTION_AUDIO
+import com.android.educo.utils.Constants.COLLECTION_DOCUMENTS
+import com.android.educo.utils.Constants.COLLECTION_VIDEO
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import java.io.File
 
+/**
+ * Author: A. L. Zailani
+ */
 class DetailsActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: DetailsViewModel
     private lateinit var mBinding: ActivityDetailsBinding
-    private val viewModel: DetailsViewModel by viewModels()
+
+    private lateinit var file: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +40,23 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        val dataSource = OfflineRoomDatabase.getInstance(application).offlineDao
+        val viewModelFactory = DetailsViewModelFactory(dataSource, application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(DetailsViewModel::class.java)
+
+        intent?.let {
+            val key = it.getStringExtra("material_key").toString()
+            val type = it.getStringExtra("material_type").toString()
+            val isOffline = it.getBooleanExtra("is_offline", false)
+
+            file = getExternalFilesDir("EdoCo/${type}s/")!!
+
+            if (isOffline)
+                fetchMaterial(key)
+            else
+                fetchMaterial(key, type)
+        }
+
         mBinding.lifecycleOwner = this
         mBinding.model = viewModel
         mBinding.content.model = viewModel
@@ -44,8 +77,18 @@ class DetailsActivity : AppCompatActivity() {
         })
     }
 
+    private fun fetchMaterial(key: String) {
+        viewModel.fetch(key)
+    }
+
+    private fun fetchMaterial(key: String, type: String) {
+        viewModel.fetch(key, type)
+    }
+
     fun download(v: View) {
-        viewModel.download("")
+        file.let {
+            viewModel.download(file.path)
+        }
     }
 
     fun back(v: View) {
