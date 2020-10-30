@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/offlineFragment"
-        android:name="com.android.educo.views.main.ui.OfflineFragment"
+        android:name="com.android.educo.views.main.ui.offline.OfflineFragment"
         android:label="fragment_offline"
         tools:layout="@layout/fragment_offline" />
     <fragment

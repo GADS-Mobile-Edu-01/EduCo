@@ -48,4 +48,9 @@
     <string name="label_duration">Duration</string>
     <string name="label_date_uploaded">Date Uploaded</string>
     <string name="field_req">This field is required</string>
+    <string name="label_documents">Documents</string>
+    <string name="label_audios">Audios</string>
+    <string name="label_videos">Videos</string>
+    <string name="desc_empty_list">Empty list</string>
+    <string name="label_no_record_found">No Offline Record found</string>
 </resources>

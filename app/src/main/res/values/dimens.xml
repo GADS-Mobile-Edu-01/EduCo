@@ -14,4 +14,6 @@
     <dimen name="dimens_4">4dp</dimen>
     <dimen name="dimens_6">6dp</dimen>
     <dimen name="dimens_80">80dp</dimen>
+    <dimen name="dimens_300">300dp</dimen>
+    <dimen name="dimens_2">2dp</dimen>
 </resources>

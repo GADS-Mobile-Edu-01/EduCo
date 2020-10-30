@@ -55,7 +55,7 @@
                     android:layout_marginEnd="@dimen/dimens_8"
                     android:ellipsize="end"
                     android:fontFamily="@font/lato_medium"
-                    android:text="Introduction to Kotlin"
+                    android:text="@{model.material.title}"
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/ibBack"
@@ -121,7 +121,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/lato_medium"
                         android:gravity="center_vertical"
-                        android:text="12MB"
+                        android:text="@{model.material.size}"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -148,7 +148,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/lato_medium"
                         android:gravity="center_vertical"
-                        android:text="12hr 15 mins"
+                        android:text="@{model.material.duration}"
                         android:textColor="@color/colorBlack"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -201,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_medium"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia consectetur orci. In quam libero, sollicitudin ut tortor ac, placerat accumsan est. Maecenas sagittis sed velit in pharetra. Integer consequat ultrices ligula, sed vulputate augue tincidunt eu. Nulla dui quam, bibendum eu nibh non, finibus congue dui. In hac habitasse platea dictumst.\n\nSuspendisse viverra, tellus a imperdiet pellentesque, turpis tellus ultricies nibh, at placerat nulla lorem non dolor. Nam a pretium neque. Etiam enim ligula, fermentum a scelerisque vitae, tempus ut nibh. Sed volutpat, arcu sed viverra accumsan, augue ligula ullamcorper tortor, sed bibendum est sapien vitae velit.v"
+                android:text="@{model.material.description}"
                 android:textColor="@color/textColorPrimary" />
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

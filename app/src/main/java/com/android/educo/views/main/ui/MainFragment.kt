@@ -1,5 +1,6 @@
 package com.android.educo.views.main.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,14 +14,17 @@ import com.android.educo.utils.PrefsUtil.setAdmin
 import com.android.educo.utils.PrefsUtil.setUserName
 import com.android.educo.utils.Resource
 import com.android.educo.views.BaseFragment
+import com.android.educo.views.details.DetailsActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseFragment() {
 
-    private val viewModel : MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
@@ -58,9 +62,9 @@ class MainFragment : BaseFragment() {
             findNavController().navigate(MainFragmentDirections.actionMainFragmentToAddCatalogueFragment())
         }
 
-        if(PrefsUtil.isAdmin()){
+        if (PrefsUtil.isAdmin()) {
             catalogueAddFab.visibility = View.VISIBLE
-        }else{
+        } else {
             catalogueAddFab.visibility = View.GONE
         }
 
